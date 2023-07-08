@@ -1,0 +1,8 @@
+      {% if month  %}
+      {{month}}
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'todo:home' 1 %}">January</a>
+          <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'todo:home' 2 %}">February</a>
+        </div>
+        {% endif %}  

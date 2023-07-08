@@ -1,0 +1,43 @@
+{% extends 'todo/main.html' %}
+{% block content %}
+<div
+  class="bg-image"
+  style="
+    background-image: url('https://images.unsplash.com/photo-1493612276216-ee3925520721?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHdlYiUyMGRlc2lnbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+    height: 80vh;
+  "
+>
+    <h1>TO DO LIST OF TASK FOR STUDENTS</h1>
+    
+    {% if month %}
+    <div  class="ms-3">
+   
+     <form method="post" action="{% url 'todo:important' month.id  %}">
+         {% csrf_token %}
+         <h5>Month:-{{month.Month_name}}</h5>
+          {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+             {% for task in month.tasks_set.all %}
+
+            <input type="checkbox" id="task{{forloop.counter}}" value="{{task.id}}">
+
+            <label for ="task{{forloop.counter}}">
+               <a href="{% url 'todo:detail' task.id %}">
+                     {{task.name}}
+               </a> ::: Your time :- {{task.date}}
+            </label>
+           <a class="btn btn-primary mb-3" href="{% url 'todo:welcome'  %}">UPDATE</a>
+           <a class="btn btn-primary mb-3"href="{% url 'todo:welcome'  %}">Delete</a>
+           <br>
+      {% endfor %}
+      <a href="{% url 'todo:welcome'  %}" class="text-light bg-dark mb-3">+ Add tasks</a>
+      <br><br>
+      <button type="submit" class="btn btn-primary mb-3" value="important">Important</button>
+     </form>
+     </div>  
+     {% else %}
+        <p>not exist</p>
+     {% endif %} 
+    
+        
+ </div>   
+{% endblock content %}

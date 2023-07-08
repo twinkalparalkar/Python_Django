@@ -1,0 +1,48 @@
+{% extends 'todo/main.html' %}
+{% block content %}    
+<div
+  class="bg-image"
+  style="
+    background-image: url('http://zamantib.com/wp-content/uploads/2021/03/contact.jpg');
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    height: 80vh;
+  "
+>
+<h1>CONTACT FORM</h1>
+<div class="container">
+     <form method="POST" class="was-validated">
+        {% csrf_token %}
+        <div class="form">
+            <label for="fname">Your Name</label>
+            <input name="name" type="text" id="fname" class="form-control" placeholder="Enter your First name">
+            
+            <label for="email">Your Email</label>
+            <input name="email" type="email" id="email" class="form-control" placeholder="Enter your email" required>
+            
+            <label for="subject">Subject</label>
+            <input name="subject" type="text"  class="form-control" placeholder="tell your view">
+            
+            <label for="logo">logo</label>
+            <input name="logo" type="file"  class="form-control" placeholder="tell your view">
+            
+            <div class="input-group mb-3">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile02">
+                <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+              </div>
+              <div class="input-group-append">
+                <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
+              </div>
+            </div>
+            <p>  </p>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</div>
+{% endblock content %}

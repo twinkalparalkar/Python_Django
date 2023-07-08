@@ -1,0 +1,61 @@
+{% extends 'todo/main.html' %}
+{% load static %}
+{% block content %}
+<div
+  class="text-light bg-image" 
+  style="
+    background-image: url('https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero.jpg');
+    height: auto;
+  "
+>
+<div align="center">
+  <h5>Select Template of your choice:-</h5>
+    <form method="post" >
+      <div class="custom-control custom-radio custom-control-inline">
+        <a href={% url 'todo:display' %}><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3irbPC6eXSUhct2ZBHzekzJ_hdAMFCzRXTg&usqp=CAU"></a>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="customRadioInline2" name="temp" class="custom-control-input" value='2'>
+        <label class="custom-control-label" for="customRadioInline2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr9wYiRrPh2xUX2tgBCg-RuhYWasSe6nF1Tw&usqp=CAU"></label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="customRadioInline3" name="temp" class="custom-control-input" value="3">
+        <label class="custom-control-label" for="customRadioInline3"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRIMZmdgEmItUcrdkSZ3tUbXIUee1aPElufQ&usqp=CAU"></label>
+      </div>
+      <p>Hello </p>
+    </form>
+    {% include 'todo/display.html' %}
+    
+    <a href={% url 'todo:add' %}>
+    <button type="button" class="btn btn-info ms-4 "> Submit </button>
+     </a>
+    <button type="button" class="btn btn-info "> Preview </button>
+    <button type="button" class="btn btn-info "> Download </button>
+    <button type="button" class="btn btn-info" style="margin-left:800px" data-toggle="modal" data-target="#edit">
+     Edit Information </button>
+    
+    <hr>
+    
+<!-- Modal -->
+<div class="modal fade text-dark" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Form</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>    
+{% endblock  %}
