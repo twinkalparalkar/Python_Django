@@ -2,7 +2,7 @@
 
 1. ToDO List APP
 
-   -->We build this Application by Django Framework.
+   -->We built this Application by Django Framework.
    -->We have implemented a lot of basics (CRUD) like adding a new task in the ToDo list and updating and deleting existing tasks. 
    -->We have tried to make them different by adding a Template section in which the user can convert his/her task into some template it will help the user to remember the ToDO task it will be fun for the user.
    -->We have provided a filter with respective months for our ToDo list.
