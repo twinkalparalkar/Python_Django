@@ -1,16 +1,26 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import *
 from django.http import HttpResponse,JsonResponse
 import random
 
 def index(request):
-    return render(request,'home.html')
+    context={'topics':Topic.objects.all()}
+    if request.GET.get('topic'):
+        return redirect(f"/quiz/?topic={request.GET.get('topic')}")
+    return render(request,'home.html',context)
+
+def quiz(request):
+    return render(request,'quiz.html')
 
 def get_quiz(request):
     try:
-        question_objs=list(Question.objects.all())
+        question_objs=Question.objects.all()
+        if request.GET.get('topic'):
+            question_objs=question_objs.filter(topic__topic_name__icontains=request.GET.get('topic'))
+        
         data=[]
-        print(question_objs)
+        question_objs=list(question_objs)
+        print(question_objs,request.GET.get('topic'))
         random.shuffle((question_objs))
         for question_obj in question_objs:
             data.append({
