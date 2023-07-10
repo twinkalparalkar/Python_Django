@@ -10,7 +10,8 @@ def index(request):
     return render(request,'home.html',context)
 
 def quiz(request):
-    return render(request,'quiz.html')
+    context={'topics':request.GET.get('topic')}
+    return render(request,'quiz.html',context)
 
 def get_quiz(request):
     try:
@@ -24,10 +25,11 @@ def get_quiz(request):
         random.shuffle((question_objs))
         for question_obj in question_objs:
             data.append({
+                'uid':question_obj.uid,
                 'topic':question_obj.topic.topic_name,
                 'question':question_obj.question_name,
                 'marks':question_obj.marks,
-                'answer':question_obj.get_answer()
+                'answers':question_obj.get_answer()
             })
 
         payload={'status':True,'data':data}

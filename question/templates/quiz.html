@@ -11,10 +11,72 @@
     <title>Quiz App</title>
   </head>
   <body>
-    
+    <div id="app">
+        <div class="container">
+            <div class="col-md-6  mx-auto pb-md-2">
+                <h3>Check Your Knowledge</h3>
+        <div v-for="question in questions">
+             <hr>
+                    <p>[[question.question]]</p>
+                    <div class="form-check" v-for="answer in question.answers">
+                        
+                        <input class="form-check-input" @change="checkAns($event,question.uid)" :value="answer.answer" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          [[answer.answer]]
+                        </label>
+                      </div>
+                </div>
+                <hr>
+            </div>
+           
+        </div>
+    </div>
         
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
-    
+    <script>
+        const app =new Vue({
+            el: '#app',
+            delimiters: ['[[', ']]'],
+            data() {
+              return {
+               topic:'{{topic}}',
+               questions:[]
+              }
+            },
+            methods:{
+                getQuestion(){
+                    
+                    fetch(`/api/getquiz/?topic=${this.topic}`)
+                    .then(res=>res.json())
+                    .then(result=>{console.log(result)
+                    this.questions=result.data
+                    })
+                },
+                checkAns(event,uid){
+                    console.log(event.target.value)
+                    this.questions.map(question=>{
+                        answers=question.answers
+                        for(var i=0;i<answers.length;i++){
+                            if(answers[i].answer==event.target.value){
+                                if(answers[i].is_correct){
+                                    alert('correct')
+                                }else{
+                                    alert('Sorry, incorrect answer')
+                                }
+                            }
+                        }
+                    })
+                
+                }
+            },
+            created() {
+                this.getQuestion()
+             
+            },
+          });
+          
+         
+    </script>
   </body>
 </html>
