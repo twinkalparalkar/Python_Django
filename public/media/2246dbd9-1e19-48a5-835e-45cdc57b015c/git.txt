@@ -1,0 +1,27 @@
+To use gitignore, you can follow these steps:
+
+1)Create a new file in your Git repository named .gitignore.
+
+2)Open the file in a text editor and add a list of files, directories, or patterns that you want Git to ignore, each on a new line. For example, if you want to ignore all .log files in your repository, add the following line to the .gitignore file:
+
+
+Copy code
+*.log
+
+3)Save the file and commit it to your Git repository using the git add and git commit commands. For example, type git add .gitignore and git commit -m "Added .gitignore file".
+
+To create a new Git repository, you can follow these steps:
+
+1)Create a new directory on your local machine where you want to store the repository. For example, type mkdir my-repo and press enter.
+2)Navigate into the new directory using the cd command. For example, type cd my-repo and press enter.
+3)Initialize a new Git repository using the git init command. For example, type "git init" and press enter.
+4)Add some files to the repository using the git add command. For example, type "git add ." to add all files in the directory to the repository.
+5)Commit the changes using the git commit command. For example, 
+type "git commit -m "Initial commit" " to commit the changes with a message.
+6)Create a new repository on a Git hosting service such as GitHub, GitLab, or Bitbucket.
+7)Follow the instructions provided by the hosting service to connect your local repository to the remote repository. For example, you may need to add a remote repository URL using the 
+"git remote add {branchname} {URL}"command and then push your changes using the "git push --set-upstream django {branchname}" command.
+
+git remote add origin https://github.com/twinkalparalkar/codingspark
+git checkout -b reactproject1
+git push -u origin ToDoListApp

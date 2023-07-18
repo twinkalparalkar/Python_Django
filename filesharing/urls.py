@@ -22,10 +22,11 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from home.views import *
 
 urlpatterns = [
-     path('handle/',HandleFileupload.as_view() ),
+    path('handle/',HandleFileupload.as_view() ),
+     path('home/',home),
+     path('download/<uid>',download),
     path('admin/', admin.site.urls),
-   
-    # path('',include('cust.urls',namespace='cust'))
+
 ]
 
 if settings.DEBUG:

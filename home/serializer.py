@@ -5,9 +5,11 @@ class FileListSerializer(serializers.Serializer):#custom
     files=serializers.ListField(
         child=serializers.FileField(max_length=1000000,allow_empty_file=False,use_url=False)
     )
+    folder=serializers.CharField(required=False)
+    
 
     def zip_files(self,folder):
-        shutil.make_archive(str(folder),'zip',f'public/static/{folder}')
+        shutil.make_archive(f'public/static/zip/{folder}','zip',f'public/media/{folder}')
 
     def create(self, validated_data):
         folder=Folder.objects.create()
@@ -18,5 +20,5 @@ class FileListSerializer(serializers.Serializer):#custom
             files_objs.append(files_obj)
         
         self.zip_files(folder.uid)
-        return {'file':{},'folder':str(folder.uid)}
+        return {'files':[],'folder':str(folder.uid)}
     
