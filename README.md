@@ -17,7 +17,7 @@
    -->Implemented SQLite schema for one-to-one, one-to-many, many-to-many relationships using ORM feature of Django.
    --> Secured confidential information like environment variables. 
    --> Implemented DRY concept using inheritance and abstract class while creating a Model class.
-   --> Tech stack: HTML, CSS, Javascript,Vue.js, Django API , Django Framework, SQLite.
+   --> Tech stack: HTML, CSS, Javascript, Django REST API, Django REST Framework, SQLite.
 
 3.FileSharing APP
    -->Created Web Application by Django REST Framework where customers can upload large-sized files and get one link to download all files So that they can share that link with others instead of sharing all files inconveniently.
